@@ -18,7 +18,7 @@
 	},
 	"scripts": {
 		"build": "tsup",
-		"docs": "ts-readme components/**/*.(ts|tsx)",
+		"generate-docs": "pnpm ts-readme && pnpm prettier --write README.md",
 		"publish:ci": "pnpm build && pnpm changeset publish",
 		"test": "vitest run",
 		"test:ci": "vitest run --coverage",

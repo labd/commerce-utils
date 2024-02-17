@@ -20,16 +20,16 @@ Utility for lists to ensure there are no empty values.
 
 ```ts
 const products = [
-  { id: 'a', price: { centAmount: 20 } },
-  { id: 'b', price: null },
-  { id: 'c', price: { centAmount: 30 } }
+	{ id: "a", price: { centAmount: 20 } },
+	{ id: "b", price: null },
+	{ id: "c", price: { centAmount: 30 } },
 ];
 products
-  .map(x => x.price)
-  .filter(isValue)
-  .map(p => p.centAmount)[
-  // results in
-  (20, 30)
+	.map((x) => x.price)
+	.filter(isValue)
+	.map((p) => p.centAmount)[
+	// results in
+	(20, 30)
 ];
 ```
 
@@ -38,7 +38,7 @@ products
 Filter utility to filter out duplicate values
 
 ```ts
-const names = ['john', 'john', 'jane'].filter(unique); // ['john', 'jane']
+const names = ["john", "john", "jane"].filter(unique); // ['john', 'jane']
 ```
 
 ### `uniqueBy` (function)
@@ -107,7 +107,7 @@ Merges two arrays, creating a single array with tuples from both arrays.
 
 ```ts
 const a = [1, 2, 3];
-const b = ['a', 'b', 'c'];
+const b = ["a", "b", "c"];
 
 zip(a, b); // [[1, 'a'], [2, 'b'], [3, 'c']]
 ```
@@ -127,24 +127,24 @@ to the next fallback locales.
 ```tsx
 // Define a map of localized values
 const greetings = {
-  en: 'Hello',
-  'en-US': 'Howdy',
-  fr: 'Bonjour'
+	en: "Hello",
+	"en-US": "Howdy",
+	fr: "Bonjour",
 };
 
 // Get localized value for British English without an explicit entry, falling
 // back to generic English
-getLocalizedValue(greetings, 'en-GB');
+getLocalizedValue(greetings, "en-GB");
 ```
 
 ```tsx
 // Get localized value for American English specifically
-getLocalizedValue(greetings, 'en-US');
+getLocalizedValue(greetings, "en-US");
 ```
 
 ```tsx
 // Attempt to get a localized value for an unsupported locale with fallbacks
-getLocalizedValue(greetings, 'es', 'en');
+getLocalizedValue(greetings, "es", "en");
 ```
 
 ### `sum` (function)
@@ -152,7 +152,7 @@ getLocalizedValue(greetings, 'es', 'en');
 Sums the values of a list of objects calculated by a callback.
 
 ```js
-sum([{ price: 1 }, { price: 2 }], x => x.price); // 3
+sum([{ price: 1 }, { price: 2 }], (x) => x.price); // 3
 ```
 
 ### `byMin` (function)
@@ -160,7 +160,7 @@ sum([{ price: 1 }, { price: 2 }], x => x.price); // 3
 Reducer callback to find object with some minimum value.
 
 ```ts
-[{ price: 1 }, { price: 2 }].reduce(byMin(x => x.price)); // {price: 1}
+[{ price: 1 }, { price: 2 }].reduce(byMin((x) => x.price)); // {price: 1}
 ```
 
 ### `byMax` (function)
@@ -168,7 +168,7 @@ Reducer callback to find object with some minimum value.
 Reducer callback to find object with some maximum value.
 
 ```ts
-[{ price: 1 }, { price: 2 }].reduce(byMax(x => x.price)); // {price: 2}
+[{ price: 1 }, { price: 2 }].reduce(byMax((x) => x.price)); // {price: 2}
 ```
 
 ### `clamp` (function)
@@ -241,8 +241,8 @@ Removes all undefined properties
 
 ```ts
 pruneObject({
-  a: 1,
-  b: undefined
+	a: 1,
+	b: undefined,
 });
 // { a: 1 }
 ```
@@ -259,7 +259,7 @@ Pick a subset of items from an object
 **returns:** Pick<T, K>
 
 ```tsx
-pick({ a: 1, b: 2, c: 3 }, 'a', 'c'); // { a: 1, c: 3 }
+pick({ a: 1, b: 2, c: 3 }, "a", "c"); // { a: 1, c: 3 }
 ```
 
 ### `objectMap` (function)
@@ -268,15 +268,15 @@ Transforms an object using the given value and or key transformers.
 
 ```ts
 objectMap(
-  {
-    a: 1,
-    b: 2,
-    c: 3
-  },
-  {
-    getKey: (key, value) => key.toUpperCase(),
-    getValue: (value, key) => value * 2
-  }
+	{
+		a: 1,
+		b: 2,
+		c: 3,
+	},
+	{
+		getKey: (key, value) => key.toUpperCase(),
+		getValue: (value, key) => value * 2,
+	},
 ); // { A: 2, B: 4, C: 6 }
 ```
 
