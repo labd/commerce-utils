@@ -6,6 +6,13 @@
 	"module": "./dist/index.js",
 	"require": "./dist/index.js",
 	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"require": "./dist/index.cjs",
+			"import": "./dist/index.js",
+			"types": "./dist/index.d.ts"
+		}
+	},
 	"keywords": [],
 	"author": "Lab Digital <opensource@labdigital.nl>",
 	"license": "MIT",
