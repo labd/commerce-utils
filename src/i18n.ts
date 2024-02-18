@@ -1,3 +1,5 @@
+import { equalsIgnoringCase } from "./strings";
+
 /**
  * Attempts to find a matching value for the provided locale by trying the given
  * locale and its language tag, followed by locale without subtags and then by
@@ -92,9 +94,10 @@ export const getLocalizedValue = <T = string>(
  * // Returns: { languageTag: 'zh', subTag: 'Hant' }
  */
 
-const parseLocale = (
+export const parseLocale = (
 	locale: string,
 ): { languageTag: string; subTag: string | undefined } => {
 	const [languageTag, subTag] = locale.split("-");
 	return { languageTag, subTag };
 };
+

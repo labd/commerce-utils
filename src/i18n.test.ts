@@ -1,4 +1,4 @@
-import { getLocalizedValue } from "./i18n";
+import { getLocalizedValue, getSimpleLanguageTag, parseLocale } from "./i18n";
 import { describe, expect, it } from "vitest";
 
 describe("getLocalizedValue", () => {
@@ -57,4 +57,26 @@ describe("getLocalizedValue", () => {
 			expect(result).toBe(expected);
 		},
 	);
+});
+
+describe("parseLocale", () => {
+	it.each([
+		{
+			locale: "en",
+			expected: { languageTag: "en", subTag: undefined },
+		},
+		{
+			locale: "en-US",
+			expected: { languageTag: "en", subTag: "US" },
+		},
+		{
+			locale: "es-ES",
+			expected: { languageTag: "es", subTag: "ES" },
+		},
+	])("should parse locale $locale", ({ locale, expected }) => {
+		const result = parseLocale(locale);
+		expect(result).toEqual(expected);
+		expect(result.languageTag).toBe(expected.languageTag);
+		expect(result.subTag).toBe(expected.subTag);
+	});
 });
