@@ -1,6 +1,6 @@
 {
 	"name": "@labdigital/toolkit",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"description": "A set of utilities for building typescript applications",
 	"type": "module",
 	"module": "./dist/index.js",
