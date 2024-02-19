@@ -1,5 +1,3 @@
-import { equalsIgnoringCase } from "./strings";
-
 /**
  * Attempts to find a matching value for the provided locale by trying the given
  * locale and its language tag, followed by locale without subtags and then by
@@ -100,4 +98,3 @@ export const parseLocale = (
 	const [languageTag, subTag] = locale.split("-");
 	return { languageTag, subTag };
 };
-

@@ -1,4 +1,4 @@
-import { getLocalizedValue, getSimpleLanguageTag, parseLocale } from "./i18n";
+import { getLocalizedValue, parseLocale } from "./i18n";
 import { describe, expect, it } from "vitest";
 
 describe("getLocalizedValue", () => {
