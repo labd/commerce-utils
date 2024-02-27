@@ -3,3 +3,4 @@ export * from "./i18n";
 export * from "./math";
 export * from "./object";
 export * from "./strings";
+export * from "./types";
