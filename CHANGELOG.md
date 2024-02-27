@@ -1,5 +1,11 @@
 # @labdigital/toolkit
 
+## 0.1.0
+
+### Minor Changes
+
+- b678d5f: Add DeepPartial<T> type
+
 ## 0.0.4
 
 ### Patch Changes
