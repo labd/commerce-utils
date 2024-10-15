@@ -89,7 +89,7 @@ describe("formatFullname", () => {
 		["John", "Doe", "zh-CN", "Doe John"],
 		["Jean", "Dupont", "fr-FR", "Jean Dupont"],
 		["Minh", "Nguyen", "vi-VN", "Nguyen Minh"],
-		["John", "Doe", undefined, "John Doe"],
+		["John", "Doe", "", "John Doe"],
 		["John", "Doe", "fr", "John Doe"],
 		["John", "Doe", "hu-HU", "Doe John"],
 	])(
