@@ -98,3 +98,49 @@ export const parseLocale = (
 	const [languageTag, subTag] = locale.split("-");
 	return { languageTag, subTag };
 };
+
+// Locales where family name comes first
+const familyNameFirstLocales = [
+	"ja-JP", // Japan
+	"zh-CN", // Mainland China
+	"zh-TW", // Taiwan
+	"ko-KR", // Korea
+	"vi-VN", // Vietnam
+	"hu-HU", // Hungary
+	"mn-MN", // Mongolia
+];
+
+/**
+ * Formats a full name based on locale-specific conventions.
+ *
+ * Certain locales place the family name (last name) before the given name
+ * (first name), while others place the given name first. This function formats
+ * the full name accordingly.
+ *
+ * @param {string} givenName - The given (first) name of the person.
+ * @param {string} familyName - The family (last) name of the person.
+ * @param {string} locale - The locale to format the name in (e.g., 'en-US', 'ja-JP').
+ *
+ * @returns {string} The formatted full name according to the locale.
+ *
+ * @example
+ * // Returns "John Doe" for US locale
+ * formatFullname("John", "Doe", "en-US");
+ *
+ * @example
+ * // Returns "Doe John" for Japanese locale
+ * formatFullname("John", "Doe", "ja-JP");
+ */
+export const formatFullname = (
+	givenName: string,
+	familyName: string,
+	locale: string,
+): string => {
+	// Check if the locale prefers family name first
+	if (familyNameFirstLocales.includes(locale)) {
+		return `${familyName} ${givenName}`;
+	}
+
+	// For other locales, given name comes first by default
+	return `${givenName} ${familyName}`;
+};

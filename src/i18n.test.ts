@@ -1,4 +1,4 @@
-import { getLocalizedValue, parseLocale } from "./i18n";
+import { formatFullname, getLocalizedValue, parseLocale } from "./i18n";
 import { describe, expect, it } from "vitest";
 
 describe("getLocalizedValue", () => {
@@ -79,4 +79,24 @@ describe("parseLocale", () => {
 		expect(result.languageTag).toBe(expected.languageTag);
 		expect(result.subTag).toBe(expected.subTag);
 	});
+});
+
+describe("formatFullname", () => {
+	it.each([
+		// Test cases: [givenName, familyName, locale, expectedResult]
+		["John", "Doe", "en-US", "John Doe"],
+		["John", "Doe", "ja-JP", "Doe John"],
+		["John", "Doe", "zh-CN", "Doe John"],
+		["Jean", "Dupont", "fr-FR", "Jean Dupont"],
+		["Minh", "Nguyen", "vi-VN", "Nguyen Minh"],
+		["John", "Doe", undefined, "John Doe"],
+		["John", "Doe", "fr", "John Doe"],
+		["John", "Doe", "hu-HU", "Doe John"],
+	])(
+		"should format '%s %s' correctly for locale '%s'",
+		(givenName, familyName, locale, expected) => {
+			const result = formatFullname(givenName, familyName, locale);
+			expect(result).toBe(expected);
+		},
+	);
 });
