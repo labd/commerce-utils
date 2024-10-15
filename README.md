@@ -147,6 +147,65 @@ getLocalizedValue(greetings, "en-US");
 getLocalizedValue(greetings, "es", "en");
 ```
 
+### `parseLocale` (function)
+
+Parses a locale string and extracts the primary language tag and an optional
+subtag. According to the IETF language tag standard (see
+https://en.wikipedia.org/wiki/IETF_language_tag), a locale can consist of a
+primary language tag followed by optional subtags, separated by hyphens. This
+function specifically extracts the primary language tag and the first subtag
+if present. Subsequent subtags are not considered in the current
+implementation.
+
+**Parameters:**
+
+- locale (`string`) - The locale string to parse. Expected format:
+  'language[-subtag]', where 'language' is a 2 or 3 letter language code, and
+  'subtag' is an optional additional identifier, such as a country code or
+  script.
+
+```tsx
+// Parsing a simple language tag
+parseLocale("en");
+// Returns: { languageTag: 'en', subTag: undefined }
+```
+
+```tsx
+// Parsing a locale with a subtag
+parseLocale("en-US");
+// Returns: { languageTag: 'en', subTag: 'US' }
+```
+
+```tsx
+// Parsing a locale with multiple subtags, note that subsequent subtags are ignored
+parseLocale("zh-Hant-HK");
+// Returns: { languageTag: 'zh', subTag: 'Hant' }
+```
+
+### `formatFullname` (function)
+
+Formats a full name based on locale-specific conventions.
+
+Certain locales place the family name (last name) before the given name
+(first name), while others place the given name first. This function formats
+the full name accordingly.
+
+**Parameters:**
+
+- givenName (`string`) - The given (first) name of the person.
+- familyName (`string`) - The family (last) name of the person.
+- locale (`string`) - The locale to format the name in (e.g., 'en-US', 'ja-JP').
+
+```tsx
+// Returns "John Doe" for US locale
+formatFullname("John", "Doe", "en-US");
+```
+
+```tsx
+// Returns "Doe John" for Japanese locale
+formatFullname("John", "Doe", "ja-JP");
+```
+
 ### `sum` (function)
 
 Sums the values of a list of objects calculated by a callback.
@@ -286,5 +345,16 @@ Generates a deterministic key for an object ignoring the order of the fields.
 
 JSON stringifies the object and generates a base64 SHA-256 hash.
 The keys of the object are sorted in order to get a deterministic key.
+
+### `equalsIgnoringCase` (function)
+
+Compares two strings for equality, ignoring case sensitivity.
+
+**Parameters:**
+
+- value (`string`) - The first string to compare.
+- other (`string`) - The second string to compare.
+
+### `DeepPartial` (type)
 
 <!-- INSERT GENERATED DOCS END -->
