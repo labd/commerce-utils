@@ -95,8 +95,11 @@ export const getLocalizedValue = <T = string>(
 export const parseLocale = (
 	locale: string,
 ): { languageTag: string; subTag: string | undefined } => {
-	const [languageTag, subTag] = locale.split("-");
-	return { languageTag, subTag };
+	const loc = new Intl.Locale(locale);
+	return {
+		languageTag: loc.language,
+		subTag: loc.region || loc.script || undefined, // Uses region or script as the subtag if available
+	};
 };
 
 // Locales where family name comes first
