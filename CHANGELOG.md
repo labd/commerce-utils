@@ -1,5 +1,15 @@
 # @labdigital/toolkit
 
+## 0.2.0
+
+### Minor Changes
+
+- 65b6a85: Add formatFullname(givenName, familyName, locale)
+
+### Patch Changes
+
+- 8f813fe: Use Intl.Locale() to parse locales
+
 ## 0.1.0
 
 ### Minor Changes
